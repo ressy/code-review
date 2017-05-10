@@ -24,8 +24,7 @@ library(stringr)
 # [:lower:]    Lower-case letters in the current locale
 # [:upper:]    Upper-case letters in the current locale
 # [:alpha:]    [:lower:] and [:upper:]
-# [:alnum:]    [:alpha:] and [:digit:]
-# [:alnum:]    0-9A-Za-z
+# [:alnum:]    [:alpha:] and [:digit:] (0-9A-Za-z)
 # [:xdigit:]   Hexadecimal digits
 # [:print:]    Printable characters: [:alnum:], [:punct:] and space
 
@@ -84,7 +83,7 @@ grep('^[A-z]$', '_')
 
 # Matching custom filename patterns
 
-datafiles <- c("data/project1/PCMP_SCID00007.NP.1.1_R1.fastq.gz",
+filepaths <- c("data/project1/PCMP_SCID00007.NP.1.1_R1.fastq.gz",
 "data/project1/PCMP_SCID00007.NP.1.1_R2.fastq.gz",
 "data/project1/PCMP_SCID00007.NP.2.1_R1.fastq.gz",
 "data/project1/PCMP_SCID00007.NP.2.1_R2.fastq.gz",
@@ -119,6 +118,7 @@ str_match(filepaths, "project(.)/PCMP_SCID[0-9]+\\.(..)\\..*_R([12])\\.fastq\\.g
 
 # Indexing off of grep's output
 
+datafiles <- filepaths
 names(datafiles) <- c("@D00728:19:C8E37ANXX:8:2214:2692:2345 1:N:0:AGGCAGAA+ACTGCATA",
                       "@D00728:19:C8E37ANXX:8:2214:2692:2345 2:N:0:AGGCAGAA+ACTGCATA",
                       "@D00728:19:C8E37ANXX:8:2214:10085:2240 1:N:0:GGACTCCT+ACTGCATA",
@@ -156,10 +156,6 @@ null <- mapply(function(p, pName){
   cat(pName, ' matches: ', m, '\n')
   
 }, patterns, names(patterns))
-
-# Building patterns from strings (and what can go wrong)
-
-# A weird case: 
 
 
 #### Implementations outside of R
