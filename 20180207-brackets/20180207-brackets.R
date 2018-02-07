@@ -1,7 +1,7 @@
 # Jesse Connell
 # 2018-02-07
 # Code Review
-# Function of the Week: [
+# Function of the Week: [ (and [[ and $)
 
 # The brackets are really functions! --------------------------------------
 
